@@ -1430,14 +1430,18 @@
         @media (max-width:720px) {
             nav.main-nav {
                 position: fixed;
-                inset: 64px 0 0 0;
-                background: var(--bg);
+                inset: 0;
+                z-index: 90;
+                background-color: var(--bg);
+                color: var(--ink);
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 18px 28px;
+                padding: 86px 28px 24px;
                 gap: 2px;
-                transform: translateY(-8px);
+                transform: translateY(-100%);
                 opacity: 0;
+                visibility: hidden;
+                overflow-y: auto;
                 pointer-events: none;
                 transition: opacity .2s ease, transform .2s ease;
                 border-top: 1px solid var(--border);
@@ -1445,12 +1449,14 @@
             nav.main-nav.open {
                 opacity: 1;
                 transform: translateY(0);
+                visibility: visible;
                 pointer-events: auto;
             }
             nav.main-nav a {
                 width: 100%;
                 padding: 14px 4px;
                 font-size: 16px;
+                color: var(--ink);
                 border-bottom: 1px solid var(--border);
             }
             .hamburger {
