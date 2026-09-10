@@ -853,6 +853,46 @@
             border-radius: var(--radius-sm);
             padding: 16px;
             background: var(--bg);
+            overflow: hidden;
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+        
+        .friweb-project-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            height: 100%;
+        }
+        
+        .friweb-project-link:hover .friweb-project {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+        
+        .friweb-project-media {
+            width: calc(100% + 32px);
+            margin: -16px -16px 14px;
+            aspect-ratio: 1905 / 910;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .friweb-project-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1);
+            transition: transform .35s ease;
+        }
+        
+        .friweb-project-link:hover .friweb-project-image {
+            transform: scale(1.06);
         }
         
         .friweb-project h4 {
@@ -865,6 +905,7 @@
             color: var(--ink-soft);
             font-size: 13.5px;
             margin-bottom: 12px;
+            flex: 1;
         }
         
         .friweb-project .project-actions {
@@ -1429,22 +1470,27 @@
         
         @media (max-width:720px) {
             nav.main-nav {
-                position: fixed;
-                inset: 0;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
                 z-index: 90;
                 background-color: var(--bg);
                 color: var(--ink);
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 86px 28px 24px;
+                padding: 10px 28px 18px;
                 gap: 2px;
-                transform: translateY(-100%);
+                transform: translateY(-8px);
                 opacity: 0;
                 visibility: hidden;
+                max-height: calc(100vh - 72px);
                 overflow-y: auto;
                 pointer-events: none;
                 transition: opacity .2s ease, transform .2s ease;
                 border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow);
             }
             nav.main-nav.open {
                 opacity: 1;
@@ -1475,6 +1521,10 @@
             .project-feats,
             .friweb-projects {
                 grid-template-columns: 1fr;
+            }
+            .friweb-project {
+                height: auto;
+                min-height: 360px;
             }
             .cta-strip {
                 flex-direction: column;
@@ -1728,31 +1778,41 @@
                             <div class="tl-projects">
                                 <p class="tl-projects-label">Projetos desenvolvidos</p>
                                 <div class="friweb-projects">
-                                    <article class="friweb-project">
-                                        <h4>XR Soluções Web</h4>
-                                        <p>Site institucional voltado à apresentação dos serviços da empresa, incluindo desenvolvimento de sites, landing pages e sistemas web.</p>
-                                        <div class="project-actions"><a href="https://xrsolucoesweb.com.br/" target="_blank" rel="noopener" class="btn btn-outline">Visitar projeto</a></div>
-                                    </article>
-                                    <article class="friweb-project">
-                                        <h4>ASEF — Associação dos Empregados</h4>
-                                        <p>Site institucional desenvolvido para apresentar informações, notícias, serviços e comunicação com associados.</p>
-                                        <div class="project-actions"><a href="https://www.asef.com.br/" target="_blank" rel="noopener" class="btn btn-outline">Visitar projeto</a></div>
-                                    </article>
-                                    <article class="friweb-project">
-                                        <h4>Prado Veículos</h4>
-                                        <p>Site para revenda de veículos com apresentação de estoque, informações dos veículos e canais de contato.</p>
-                                        <div class="project-actions"><a href="https://pradoveiculosnf.com.br/" target="_blank" rel="noopener" class="btn btn-outline">Visitar projeto</a></div>
-                                    </article>
-                                    <article class="friweb-project">
-                                        <h4>Pousada Amaryllis</h4>
-                                        <p>Site institucional para pousada, apresentando informações sobre hospedagem, estrutura, localização e formulário de reservas.</p>
-                                        <div class="project-actions"><a href="https://www.pousadaamaryllis.com.br/" target="_blank" rel="noopener" class="btn btn-outline">Visitar projeto</a></div>
-                                    </article>
-                                    <article class="friweb-project">
-                                        <h4>Ana Schott Spa</h4>
-                                        <p>Site institucional para apresentação de serviços, produtos, informações sobre o espaço e canais de contato.</p>
-                                        <div class="project-actions"><a href="https://www.anaschottestetica.com.br/" target="_blank" rel="noopener" class="btn btn-outline">Visitar projeto</a></div>
-                                    </article>
+                                    <a class="friweb-project-link" href="https://xrsolucoesweb.com.br/" target="_blank" rel="noopener noreferrer">
+                                        <article class="friweb-project">
+                                            <div class="friweb-project-media"><img class="friweb-project-image" src="xr.png" alt="Página inicial do site XR Soluções Web"></div>
+                                            <h4>XR Soluções Web</h4>
+                                            <p>Site institucional voltado à apresentação dos serviços da empresa, incluindo desenvolvimento de sites, landing pages e sistemas web.</p>
+                                        </article>
+                                    </a>
+                                    <a class="friweb-project-link" href="https://www.arasef.com.br/" target="_blank" rel="noopener noreferrer">
+                                        <article class="friweb-project">
+                                            <div class="friweb-project-media"><img class="friweb-project-image" src="arasef.png" alt="Site da ARASEF"></div>
+                                            <h4>ARASEF — Associação dos Revendedores de Agrotóxicos da Região Serrana Fluminense</h4>
+                                            <p>Site institucional da ARASEF, associação sem fins lucrativos que atua no recebimento e recolhimento de embalagens vazias de agrotóxicos na Região Serrana Fluminense e na Baixada Fluminense, promovendo a destinação
+                                                correta conforme a legislação vigente.</p>
+                                        </article>
+                                    </a>
+                                    <a class="friweb-project-link" href="https://pradoveiculosnf.com.br/" target="_blank" rel="noopener noreferrer">
+                                        <article class="friweb-project">
+                                            <div class="friweb-project-media"><img class="friweb-project-image" src="prado.png" alt="Site da Prado Veículos"></div>
+                                            <h4>Prado Veículos</h4>
+                                            <p>Site para revenda de veículos com apresentação de estoque, informações dos veículos e canais de contato.</p>
+                                        </article>
+                                    </a>
+                                    <a class="friweb-project-link" href="https://www.pousadaamaryllis.com.br/" target="_blank" rel="noopener noreferrer">
+                                        <article class="friweb-project">
+                                            <div class="friweb-project-media"><img class="friweb-project-image" src="pousada.png" alt="Site da Pousada Amaryllis"></div>
+                                            <h4>Pousada Amaryllis</h4>
+                                            <p>Site institucional para pousada, apresentando informações sobre hospedagem, estrutura, localização e formulário de reservas.</p>
+                                        </article>
+                                    </a>
+                                    <a class="friweb-project-link" href="https://www.anaschottestetica.com.br/" target="_blank" rel="noopener noreferrer">
+                                        <article class="friweb-project">
+                                            <h4>Ana Schott Spa</h4>
+                                            <p>Site institucional para apresentação de serviços, produtos, informações sobre o espaço e canais de contato.</p>
+                                        </article>
+                                    </a>
                                 </div>
                             </div>
                         </div>
